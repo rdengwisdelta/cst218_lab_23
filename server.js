@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 // force Node DNS servers
 require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // Health check
 app.get("/", (req, res) => {
@@ -49,5 +49,5 @@ app.use("/recipes", entryRoutes);
 app.use("/auth", authRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
