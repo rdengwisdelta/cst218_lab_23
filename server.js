@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // force Node DNS servers
-require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
+//require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
 
 const PORT = process.env.PORT;
 
