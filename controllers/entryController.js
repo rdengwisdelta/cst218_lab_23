@@ -1,8 +1,8 @@
-const Model = require("../models/Entry.js");
+const SoapRecipe = require("../models/soapRecipe");
 
-async function getAllItems(req, res) {
+async function getAllRecipes(req, res) {
   try {
-    const items = await Model.find({ userId: req.userId });
+    const items = await SoapRecipe.find({ userId: req.userId });
 
     return res.status(200).json({
       message: "Items retrieved",
@@ -13,9 +13,9 @@ async function getAllItems(req, res) {
   }
 }
 
-async function createItem(req, res) {
+async function createRecipe(req, res) {
   try {
-    const created = await Model.create({
+    const created = await SoapRecipe.create({
       ...req.body,
       userId: req.userId
     });
@@ -29,9 +29,9 @@ async function createItem(req, res) {
   }
 }
 
-async function updateItem(req, res) {
+async function updateRecipe(req, res) {
   try {
-    const updated = await Model.findOneAndUpdate(
+    const updated = await SoapRecipe.findOneAndUpdate(
       { _id: req.params.id, userId: req.userId },
       req.body,
       { new: true, runValidators: true }
@@ -50,9 +50,9 @@ async function updateItem(req, res) {
   }
 }
 
-async function deleteItem(req, res) {
+async function deleteRecipe(req, res) {
   try {
-    const deleted = await Model.findOneAndDelete({
+    const deleted = await SoapRecipe.findOneAndDelete({
       _id: req.params.id,
       userId: req.userId
     });
@@ -71,8 +71,8 @@ async function deleteItem(req, res) {
 }
 
 module.exports = {
-  getAllItems,
-  createItem,
-  updateItem,
-  deleteItem
+  getAllRecipes,
+  createRecipe,
+  updateRecipe,
+  deleteRecipe
 };
